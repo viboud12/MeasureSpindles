@@ -64,7 +64,8 @@ selectImage(CELLviboud);
 run("Duplicate...", "duplicate channels=2");
 run("Grays");
 getStatistics(area, mean, min, max, std, histogram);
-favThresh = min + 0.20*(max-min);
+// was 0.2
+favThresh = min + 0.3*(max-min);
 setThreshold(favThresh, max);
 run("Convert to Mask");
 mask4 = getImageID();
@@ -82,7 +83,7 @@ int2 = getImageID();
 imageCalculator("Add create", int2,mask4);
 run("Fill Holes");
 run("Despeckle");
-run("Maximum...", "radius=3");
+run("Maximum...", "radius=2");
 run("Minimum...", "radius=4");
 run("Median...", "radius=2");
 run("Fill Holes");

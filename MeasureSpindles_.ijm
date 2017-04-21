@@ -78,7 +78,8 @@ selectImage(CELLviboud);
 run("Duplicate...", "duplicate channels=2");
 run("Grays");
 getStatistics(area, mean, min, max, std, histogram);
-favThresh = min + 0.20*(max-min);
+// was 0.20 in v1.0
+favThresh = min + 0.30*(max-min);
 setThreshold(favThresh, max);
 run("Convert to Mask");
 mask4 = getImageID();
@@ -123,6 +124,10 @@ run("Set Scale...", "distance=pixsize known=1 pixel=1 unit=micron");
 rename(t);
 run("Analyze Particles...", "size=10-Infinity display exclude include add");
 
+selectImage(final);
+run("Remove Overlay");
+t4 = t + 'SPINDLE';
+saveAs("Tiff", dir4 + t4 + ".tif");
 selectImage(final);
 close();
 }

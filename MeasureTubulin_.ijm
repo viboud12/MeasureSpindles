@@ -105,6 +105,9 @@ rename(t);
 run("Analyze Particles...", "size=10-Infinity display exclude include add");
 
 selectImage(final);
+run("Remove Overlay");
+t4 = t + 'SPINDLE';
+saveAs("Tiff", dir4 + t4 + ".tif");
 close();
 }
 
